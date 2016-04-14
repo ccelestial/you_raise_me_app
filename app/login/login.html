@@ -1,20 +1,31 @@
-<div class="row" ng-controller="LoginController">
-  <div class="col s3 offset-3">
-    <h1 style="text-align:center;">You_Raise Me App!</h1>
-    <form class="col s3 offset-3">
-      <div class="input-field col s12">
-        <input placeholder="Placeholder" ng-model="email" type="email" class="validate">
+<div class="login row" ng-controller="LoginController">
+  <div class="title col s12 center-align">
+    <h1>You_Raise Me App</h1>
+  </div>
+  <div class="col s4 offset-s4">
+    <form class="row">
+      <div class="row input-field col s12">
+        <input id="email_add" type="email" ng-model="email" class="validate">
+        <label for="email_add">Email</label>
       </div>
-      <md-input-container>
-        <input ng-model="email" type="email" autofocus="" placeholder="Email" >
-      </md-input-container>
-      <md-input-container>
-        <input ng-model="password" type="password" autofocus="" placeholder="Password" >
-      </md-input-container>
-      <md-content md-theme="myTheme">
-        <a href="#chapter1" class="md-accent">Sign Up</a>
-      </md-content>
-      <md-button class="md-raised" ng-click="SignIn($event)" type="submit">Sign in</md-button>
+      <div class="row input-field col s12">
+        <input id="pass_word" type="password" ng-model="password" class="validate">
+        <label for="pass_word">Password</label>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light btn btn-large col s6 offset-s3" ng-click="SignIn($event)" type="submit">Sign in</a>
+      </div>
+      <!-- <div class="row center-align">
+        <a class="col s12" href="#">Sign Up</a>
+      </div> -->
     </form>
+  </div>
+  <div class=container>
+    <div class="quote col s12 center-align">
+      <h4>
+        “As above, so below, as within, so without, as the universe, so the soul…” 
+        <small>- Hermes Trismegistus</small>
+      </h4>
+    </div>
   </div>
 </div>

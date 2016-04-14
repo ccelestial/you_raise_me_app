@@ -20,11 +20,8 @@ function($scope,$firebaseSimpleLogin,$window) {
  $scope.SignIn = function(event) {
    event.preventDefault();  // To prevent form refresh
      
-    console.log("test");
     var username = $scope.email;
     var password = $scope.password;
-     
-     
      
     loginObj.$login('password', {
             email: username,
