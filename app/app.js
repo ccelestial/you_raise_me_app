@@ -3,9 +3,10 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'login',
-    'dashboard',
-  'firebase'
+  'login', 
+  'dashboard',      
+  'firebase',
+  'ngMaterial'
 ]).
 config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/dashboard', {
