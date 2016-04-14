@@ -1,0 +1,93 @@
+ {
+ "CultureCode":[
+	{
+	"id": "integrity",
+	"name": "Integrity"
+	},
+	{
+	"id": "hard work",
+	"name": "Hard Work"
+	},
+	{
+	"id": "fun",
+	"name": "Fun"
+	},
+	{
+	"id": "sociable",
+	"name": "Sociable"
+	},
+	{
+	"id": "learning",
+	"name": "Learning"
+	},
+	{
+	"id": "creativity",
+	"name": "Creativity"
+	}
+],
+"users":[
+	{
+	"id": "jandrada",
+	"name": "ANDRADA, JEMIMA ALIA"
+	},
+	{
+	"id": "aaram",
+	"name": "ARAM, ARDEE CORAÑES"
+	},
+	{
+	"id": "kbustamante",
+	"name": "BUSTAMANTE, KEVIN FERRER"
+	}
+],
+ 
+  "pf_list": [
+    {
+      "id": 1,
+      "Date" : "4/4/2016",
+	  "Name" : "Kevin",
+	  "CultureCode": "Fun",
+	  "Reason" : "Wala lang"
+    },
+	{
+      "id": 2,
+      "Date" : "4/4/2016",
+	  "Name" : "Tops",
+	  "CultureCode": "HardWork",
+	  "Reason" : "Wala lang"
+	  
+    },
+	{
+      "id": 3,
+      "Date" : "4/4/2016",
+	  "Name" : "Niel",
+	  "CultureCode": "Integrity",
+	  "Reason" : "Wala lang"
+	  
+    },
+    {
+      "id": 4,
+      "Date" : "4/4/2016",
+	  "Name" : "Kevin",
+	  "CultureCode": "Fun",
+	  "Reason" : "Wala lang"
+    },
+	{
+      "id": 5,
+      "Date" : "4/4/2016",
+	  "Name" : "Tops",
+	  "CultureCode": "HardWork",
+	  "Reason" : "Wala lang"
+	  
+    },
+	{
+      "id": 6,
+      "Date" : "4/4/2016",
+	  "Name" : "Niel",
+	  "CultureCode": "Integrity",
+	  "Reason" : "Wala lang"
+	  
+    }
+  ],
+  "newTask": "",
+  "editedTask": null
+}    
