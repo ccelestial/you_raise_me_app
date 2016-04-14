@@ -3,15 +3,18 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'myApp.login',       
+  'login',
+    'dashboard',
   'firebase'
 ]).
 config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/dashboard', {
+            templateUrl: 'dashboard/dashboard.html',
+            controller: 'DashboardController'
+        });
+    
+    
   $routeProvider.otherwise({redirectTo: '/login'});
 }]);
 
 
-//$routeProvider.when('/login', {
-//templateUrl: 'login/login.html',
-//        controller: 'LoginController'
-//    });

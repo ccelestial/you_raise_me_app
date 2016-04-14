@@ -1,23 +1,30 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
+angular.module('login', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
     templateUrl: 'login/login.html',
-    controller: 'LoginControler'
+    controller: 'LoginController'
   });
 }])
 
 
-.controller('LoginControler',['$scope','$firebaseSimpleLogin',function($scope,$firebaseSimpleLogin) {
+.controller('LoginController',['$scope','$firebaseSimpleLogin','$window',
+
+function($scope,$firebaseSimpleLogin,$window) {
+    
  var firebaseObj = new Firebase("https://you-raise-me-app.firebaseio.com/");    
  var loginObj = $firebaseSimpleLogin(firebaseObj);
     
- $scope.SignIn = function($scope) {
+ $scope.SignIn = function(event) {
    event.preventDefault();  // To prevent form refresh
-    var username = $scope.user.email;
-    var password = $scope.user.password;
+     
+    console.log("test");
+    var username = $scope.email;
+    var password = $scope.password;
+     
+     
      
     loginObj.$login('password', {
             email: username,
@@ -26,6 +33,8 @@ angular.module('myApp.login', ['ngRoute'])
         .then(function(user) {
             // Success callback
             console.log('Authentication successful');
+                window.location.href = 'dashboard/dashboard.html';
+            
         }, function(error) {
             // Failure callback
             console.log('Authentication failure');
@@ -33,7 +42,6 @@ angular.module('myApp.login', ['ngRoute'])
      
     // Auth Logic will be here
  }
- 
  
 }]);
 

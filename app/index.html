@@ -9,23 +9,16 @@
   <title>You_Raise_Me_App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  -->
+  
    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
  
-    <link href="justified-nav.css" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     
   <link rel="stylesheet" href="app.css">
     
-    
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-
-  
+ 
 </head>
 <body>
 
@@ -34,36 +27,24 @@
   <![endif]-->
 
   <div ng-view></div>
-
-  <div class="container">
-        <div class="jumbotron center" style="padding-bottom:0px;">
-            <h2>AngularJS & Firebase App!</h2>
-        </div>
-        <form class="form-signin" role="form">
-            <input type="email" class="form-control" placeholder="Email address" required="" autofocus="">
-            <input type="password" class="form-control" placeholder="Password" required="">
-            <label class="checkbox">
-                <a href="#"> Sign Up</>
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
  
-  </div>
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
  
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
       
   <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
   <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
   <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  
 
-<script src="app.js"></script>
-<script src="login/logincontroller.js"></script>
+  <script src="app.js"></script>
+  <script src="login/logincontroller.js"></script>
+  <script src="dashboard/dashboardController.js"></script>
 </body>
 </html>
