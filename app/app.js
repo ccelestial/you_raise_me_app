@@ -107,12 +107,8 @@ angular.module('myApp', [
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {
     templateUrl: 'dashboard/dashboard.html',
-    controller: 'DashboardController',
-    resolve: {
-
-    }
+    controller: 'DashboardController'
   });
-    
     
   $routeProvider.otherwise({redirectTo: '/login'});
 }]);
