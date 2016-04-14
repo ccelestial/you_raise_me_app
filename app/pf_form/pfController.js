@@ -30,7 +30,15 @@ function pfController($http, $scope) {
 	$scope.getRecord = function(){
 		ref = new Firebase("https://yrma.firebaseio.com/putForward");
 		ref.on("value", function(response){
-			$scope.pf_list = response.val();
+			$scope.pf_list = [];
+			$.each(response.val(), function(key, value){
+				var data = {
+					"id": key,
+				};
+				$.extend(data, value);
+				$scope.pf_list.push(data);
+			});
+			console.log($scope.pf_list);
 			$scope.$apply();
 		})
 	}
@@ -47,7 +55,6 @@ function pfController($http, $scope) {
     }
 	
 	$scope.deleteRecord = function(id){
-	console.log(id.constructor.name);
 		ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
 		ref.remove();
 	}
