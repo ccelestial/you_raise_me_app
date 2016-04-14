@@ -6,6 +6,7 @@ angular.module('myApp', [
   'login', 
   'dashboard',      
   'firebase',
+  'profile',
   'ngMaterial'
 ]).
 config(['$routeProvider', function($routeProvider) {
