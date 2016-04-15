@@ -10,8 +10,32 @@ angular.module('putForward', ['ngRoute'])
 }])
 
 
-.controller('PfController', ['$http', '$scope',
-  function ($http, $scope) {
+.controller('PfController', ['$http', '$scope', 'FirebaseService',
+  function ($http, $scope, FirebaseService) {
+    $scope.form = {
+      cultureCodeOptions: [],
+      employeeOptions: []
+    };
+
+    var init = function () {
+      FirebaseService.all("cultureCode").then(function(response){
+        Materialize.toast('Gone Here!', 3000);
+        console.log("Cc", response);
+        $scope.form.cultureCodeOptions = response;
+        FirebaseService.all("putForward").then(function(response){
+          console.log("PF",response);
+          FirebaseService.all("user").then(function(response){
+            console.log("Us",response);
+            FirebaseService.all("endorsement").then(function(response){
+              console.log("Ed",response);
+            });
+          });
+        });
+      });
+    };
+
+    init();
+
     /* jshint validthis:true */
     $scope.title = 'equityTransactionController';
   	

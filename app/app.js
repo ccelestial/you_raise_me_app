@@ -11,107 +11,63 @@ angular.module('myApp', [
   'ngMaterial'
 ])
 
+
 //////////////////
 // Data Services
 //////////////////
 .factory("FirebaseService", ["$firebaseObject", "$firebaseArray", 
   function($firebaseObject, $firebaseArray){
+    var tableNames = ["cultureCode", "endorsement", "putForward", "user"];
     var firebaseUrl = "https://yrma.firebaseio.com/";
 
-    // Culture Codes
-    var cultureCodes = function (){
-      var ccUrl = firebaseUrl + "cultureCode";
-      
-      var all = function() {
-        var ref = new Firebase(ccUrl);
-        var result = $firebaseArray(ref);
-
-        return result.$loaded();
-      };
-
-      var create = function(data) {
-        var ref = new Firebase(ccUrl);
-        var result = $firebaseArray(ref);
-
-        return result.$add(data);
-      };
-
-      var remove = function(data) {
-        var ref = new Firebase(ccUrl);
-        var result = $firebaseArray(ref);
-
-        return result.$remove(data);
-      };
-
-      var sub_service = {
-        all: all,
-        create: create,
-        remove: remove
-      };
-
-      return sub_service;
+    var isValidTableName = function(tableName){
+      return (tableNames.indexOf(tableName) < 0 ? false : true);
     };
 
-    // Endorsements
-    var endorsements = function (){
-      var eUrl = firebaseUrl + "endorsement";
+    var getFirebaseURL = function(tableName){
+      tableName = (tableName == 'user' ? tableName + "s" : tableName);
 
-      var all = function (){
-        var ref = new Firebase(eUrl);
-        var result = $firebaseArray(ref);
-
-        return result.$loaded();
-      };
-
-      var sub_service = {
-        all: all
-      };
-
-      return sub_service;
+      return (firebaseUrl + tableName);
     };
 
-    // Put Forward
-    var putForwards = function (){
-      var pFUrl = firebaseUrl + "putForward";
+    var all = function(tableName) {
+      if(!isValidTableName(tableName)){
+        return;
+      }
 
-      var all = function (){
-        var ref = new Firebase(pFUrl);
-        var result = $firebaseArray(ref);
+      var ref = new Firebase(getFirebaseURL(tableName));
+      var result = $firebaseArray(ref);
 
-        return result.$loaded();
-      };
-
-      var sub_service = {
-        all: all
-      };
-
-      return sub_service;
+      return result.$loaded();
     };
 
-    // Users
-    var users = function () {
-      var uUrl = firebaseUrl + "users";
+    var create = function(tableName, data) {
+      if(!isValidTableName(tableName)){
+        return;
+      }
 
-      var all = function() {
-        var ref = new Firebase(uUrl);
-        var result = $firebaseArray(ref);
+      var ref = new Firebase(getFirebaseURL(tableName));
+      var result = $firebaseArray(ref);
 
-        return result.$loaded();
-      };
+      return result.$add(data);
+    };
 
-      var sub_service = {
-        all: all
-      };
+    var remove = function(tableName, data) {
+      if(!isValidTableName(tableName)){
+        return;
+      }
 
-      return sub_service;
+      var ref = new Firebase(getFirebaseURL(tableName));
+      var result = $firebaseArray(ref);
+
+      return result.$remove(data);
     };
 
     /// Put Services Here
     var service = {
-      cultureCodes: cultureCodes,
-      endorsements: endorsements,
-      putForwards: putForwards,
-      users: users
+      all: all,
+      create: create,
+      remove: remove
     };
 
     return service;
