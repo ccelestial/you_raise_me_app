@@ -2,12 +2,6 @@
 
 angular.module('putForward', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/putForward', {
-    templateUrl: 'pf_form/pf_form.html',
-    controller: 'PfController'
-  });
-}])
 
 
 .controller('PfController', ['$http', '$scope', 'FirebaseService',
@@ -104,5 +98,21 @@ angular.module('putForward', ['ngRoute'])
   		// insert.createdAt = date;
   		// usersRef.push().set(insert);
   	};
+
+	
+	$scope.months = [
+		{id: 1, mo: "January"},
+		{id: 2,mo: "February"},
+		{id: 3,mo: "March"},
+		{id: 4,mo: "April"},
+		{id: 5,mo: "May"},
+		{id: 6,mo: "June"},
+		{id: 7,mo: "July"},
+		{id: 8,mo: "August"},
+		{id: 9,mo: "September"},
+		{id: 10,mo: "October"},
+		{id: 11,mo: "November"},
+		{id: 12,mo: "December"},
+	];
   	
   }]);

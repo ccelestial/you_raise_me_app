@@ -1,10 +1,22 @@
 <div layout="column" layout-align="space-around">
+	<a class="waves-effect waves-light btn">Dashboard</a>
+	<a class="waves-effect waves-light btn">Input Putforward data</a>
 	<h1 style="text-align:center;">Lyn's Report Page</h1>
 	
-	<select class="browser-default" ng-model="pfModel.Name">
-		<option value="">Month</option>
-    </select>
-						
+	<div class="row">
+		<div class="col s2">
+			Select Month:
+			<select class="browser-default" ng-model="selectedMonth" ng-change="monthChange(selectedMonth)">
+				<option value="{{month.id}}" ng-repeat="month in months">{{month.mo}}</option>
+			</select>
+		</div>
+
+		<div ng-hide="true" class="col s2 " style="float:right">
+			Accumulated GC for the year:
+			<h3>{{accumullatedGC}}</h3>
+			
+		</div>		
+	</div>			
     <div>
         <table class="striped centered highlight">
             <thead>
@@ -15,7 +27,13 @@
                     <th></th>
                 </tr>
             </thead>
-
+				<tr ng-repeat="report in reports">
+					<td>{{report[0].personId}}</td>
+					<td>{{report.length}}</td>
+					<td>{{gcCount(report.length)}}</td>
+				</tr>
+				<tr>
+				
             <tbody>
             </tbody>
         </table>

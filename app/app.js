@@ -8,6 +8,7 @@ angular.module('myApp', [
   'firebase',
   'profile',
   'putForward',
+  'putForwardReport',
   'ngMaterial'
 ])
 
@@ -162,6 +163,12 @@ angular.module('myApp', [
   $routeProvider.when('/dashboard', {
     templateUrl: 'dashboard/dashboard.html',
     controller: 'DashboardController'
+  }).when('/putForward/report', {
+    templateUrl: 'pf_form/pf-report.html',
+    controller: 'PfReportController'
+  }).when('/putForward', {
+    templateUrl: 'pf_form/pf_form.html',
+    controller: 'PfController'
   });
 ///$routeProvider.otherwise({redirectTo: '/login'});
 
