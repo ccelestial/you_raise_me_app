@@ -86,7 +86,7 @@ angular.module('putForward', ['ngRoute'])
         return employee.id == id
       });
 
-      return (result.lenght ? result[0].name : "Unknown");
+      return (result.length ? result[0].name : "Unknown");
     };
 
     var pfDecorator = function(){
@@ -110,7 +110,8 @@ angular.module('putForward', ['ngRoute'])
           Materialize.toast('Creation failed!', 2000);
         }
 
-        $scope.pfModel = {};
+        init();
+        $scope.pfModel = {"createdAt": new Date()};
       });
   		// ref = new Firebase("https://yrma.firebaseio.com/");
   		// var usersRef = ref.child("putForward");
