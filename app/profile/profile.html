@@ -24,65 +24,83 @@
 	</div>
 	
 	<!-- Right Pane -->
-	<div class="col s9 section FullBox" style="background-color: #F0F0F0 ; ">
-			<h4>CULTURE CODE</h4>
+	<div class="col s9 section FullBox" style="background-color: #F0F0F0 ; " ng-controller="ProfileController">
+        <div class="row center-align">
+			<h5>CULTURE CODE</h5>
 		<!-- <div class = "row FullBox"> -->
-			<div class="section" style="height: 30%; text-align:center">
-				<div class = "col s2">
-					<div class = "card" style = "background-color: #3366ff">Integrity
-							<div class = "card-action">
-								<p>4</p>
-							</div>
+			
+				<div class = "col s4">
+					<div class = "card" style = "background-color: #3366ff">
+                        <span class="cc-title">Integrity</span>
+                        <div class="card-image">
+                              <img src="images/integrity.jpg">
+                            <span class="card-title col s12 cc-badge cc-badge-blue">{{integrity}}</span>
+                        </div>
 					</div>
 				</div>
-				<div class = "col s2" >
-					<div class = "card " style = "background-color: #ff3333">Hardwork
-						<div class = "card-action">
-							<p>3</p>
-						</div>
+				<div class = "col s4" >
+					<div class = "card " style = "background-color: #ff3333">
+                        <span class="cc-title">Hardwork</span>
+                        <div class="card-image">
+                              <img src="images/hardwork.jpg">
+                           <span class="card-title col s12 cc-badge " >{{hardwork}}</span>
+                        </div>
 					</div>
 				</div>
-				<div class = "col s2">
-					<div class = "card " style = "background-color: #47d147">Fun
-						<div class = "card-action">
-							<p>4</p>
-						</div>
+          
+				<div class = "col s4">
+					<div class = "card " style = "background-color: #47d147">
+                        <span class="cc-title">Fun</span>
+                        <div class="card-image">
+                              <img src="images/fun.jpg">
+                           <span class="card-title col s12 cc-badge cc-badge-green">{{fun}}</span>
+                        </div>
 					</div>
 				</div>
-				<div class = "col s2">
-					<div class = "card " style = "background-color: #3366ff">Sociable
-						<div class = "card-action">
-							<p>7</p>
-						</div>
+           
+				<div class = "col s4">
+					<div class = "card " style = "background-color: #3366ff">
+                        <span class="cc-title">Sociable</span>
+                        <div class="card-image">
+                              <img src="images/sociable.jpg">
+                            <span class="card-title col s12 cc-badge cc-badge-blue">{{sociable}}</span>
+                        </div>
 					</div>
 				</div>
-				<div class = "col s2">
-					<div class = "card " style = "background-color: #ff3333">Learning
-						<div class = "card-action">
-							<p>2</p>
-						</div>
+				<div class = "col s4">
+					<div class = "card " style = "background-color: #ff3333">
+                        <span class="cc-title">Learning</span>
+                        <div class="card-image">
+                              <img src="images/Learning.jpg">
+                            <span class="card-title col s12 cc-badge cc-badge-red">{{learning}}</span>
+                        </div>
 					</div>
 				</div>
-				<div class = "col s2">
-					<div class = "card " style = "background-color: #47d147">Creativity
-						<div class = "card-action">
-							<p>0</p>
-						</div>
+				<div class = "col s4">
+					<div class = "card " style = "background-color: #47d147">
+                        <span class="cc-title">Creativity</span>
+                        <div class="card-image">
+                              <img src="images/creativity.jpg">
+                            <span class="card-title col s12 cc-badge cc-badge-green">{{creativity}}</span>
+                        </div>
 					</div>
 				</div> 
-			</div>
 			
-			<div class="divider"></div>
+            </div>
 			
-			<div class="section" style="height: 70%; ">
-			<h4>ENDORSEMENTS</h4>
-				<ul class="collection">
-				  <li class="collection-item">Testimony 1</li>
-				  <li class="collection-item">Testimony 2</li>
-				  <li class="collection-item">Testimony 3</li>
-				  <li class="collection-item">Testimony 4</li>
-				</ul>
-			</div>
+			<div class="divider">&nbsp;</div>
+			<div class="row center-align">
+                 <h5>ENDORSEMENTS</h5>
+                     <md-content>
+                      <md-list flex>
+                        <md-list-item ng-repeat="item in endorsements" ng-click="null">
+                          <div class="md-list-item-text" layout="column">
+                            <p>{{ item.message }}</p>
+                          </div>
+                        </md-list-item>
+                    <md-list flex>
+                    </md-content>
+            </div>
 		<!-- </div> -->
 	</div>
 </div>

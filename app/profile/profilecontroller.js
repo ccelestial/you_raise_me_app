@@ -9,6 +9,13 @@ angular.module('profile', ['ngRoute','ngMaterial'])
   });
 }])
 
-.controller('ProfileController', ['$scope', function ($scope) {
-    $scope.grid = [[1,2,3],[4,5,6],[7,8,9]];
+.controller('ProfileController', ['$scope', 'FirebaseService', function ($scope,FirebaseService) {
+    
+    $scope.integrity = 4;
+    $scope.hardwork = 10;
+    $scope.fun = 5;
+    $scope.sociable = 8;
+    $scope.learning = 3;
+    $scope.creativity = 7;
+    $scope.endorsements = [{message:'Good'},{message:'Good 1'},{message:'Good 2'},{message:'Good 3'}];
   }]);

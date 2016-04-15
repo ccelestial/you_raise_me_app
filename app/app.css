@@ -1,7 +1,7 @@
 /* app css stylesheet */
 
 .container {
-  height: 100%;
+  min-height: 100%;
 }
 
 .login {
@@ -26,4 +26,39 @@
 
 .quote > h4 {
   color: #26a69a;
+}
+
+.cc-title{
+  font-weight: bold;
+  font-size: medium;
+  color: white;
+  
+}
+
+.cc-badge{
+  font-weight: bold !important;
+  font-size: xx-large !important;
+  height:100%;
+}
+
+.cc-badge-green{
+    
+}
+
+.cc-badge-red{
+    
+}
+
+.cc-badge-blue{
+    
+}
+
+.card-image img{
+    -webkit-filter: sepia; /*sepia, hue-rotate, invert....*/
+    -webkit-filter: brightness(70%)
+}
+
+
+.fullheight{
+    height:100%;
 }
