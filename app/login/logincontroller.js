@@ -10,33 +10,31 @@ angular.module('login', ['ngRoute'])
 }])
 
 
-.controller('LoginController', ['$scope','$firebaseAuth','$window',
-  function($scope, $firebaseSimpleLogin, $window) {
-      
-    var firebaseObj = new Firebase("https://you-raise-me-app.firebaseio.com/");    
-    var loginObj = $firebaseSimpleLogin(firebaseObj);
-       
-    $scope.SignIn = function(event) {
-      event.preventDefault();  // To prevent form refresh
-        
-      var username = $scope.email;
-      var password = $scope.password;
-        
-      loginObj.$login('password', {
-        email: username,
-        password: password
-      })
-      .then(function(user) {
-        // Success callback
-        console.log('Authentication successful');
-        window.location.href = 'dashboard/dashboard.html';
-      }, function(error) {
-        // Failure callback
-        console.log('Authentication failure');
-      });
-        
-       // Auth Logic will be here
-    }
- 
+.controller('LoginController', ['$scope','$firebaseAuth','FirebaseService', '$window',
+  function($scope, $firebaseSimpleLogin, FirebaseService, $window) {
+  
+  $scope.SignIn = function(event) {
+    var ref = new Firebase("https://yrma.firebaseio.com");
+     ref.authWithOAuthPopup("google", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+        var thisuser = 
+          {
+            "id":authData.google.id,
+            "email":authData.google.email,
+            "name":authData.google.displayName,
+            "imageUrl":authData.google.profileImageURL
+          };
+        console.log("Ito Yung User", thisuser);
+        FirebaseService.create("user", thisuser).then(function(response){
+        })
+      }
+    },
+    {scope: "email"}
+    );
+      // Auth Logic will be here
+    }     
 }]);
 
