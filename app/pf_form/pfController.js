@@ -17,23 +17,21 @@ angular.module('putForward', ['ngRoute'])
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
     
+
+    $scope.putForwards = [];
+
     $scope.form = {
       cultureCodeOptions: [],
-      employeeOptions: []
+      employeeOptions: [],
     };
 
     var init = function () {
       FirebaseService.all("cultureCode").then(function(response){
-        Materialize.toast('Gone Here!', 3000);
-        console.log("Cc", response);
         $scope.form.cultureCodeOptions = response;
         FirebaseService.all("putForward").then(function(response){
-          console.log("PF",response);
+          $scope.putForwards = response;
           FirebaseService.all("user").then(function(response){
-            console.log("Us",response);
-            FirebaseService.all("endorsement").then(function(response){
-              console.log("Ed",response);
-            });
+            $scope.form.employeeOptions = response;
           });
         });
       });
@@ -42,59 +40,69 @@ angular.module('putForward', ['ngRoute'])
     init();
 
     /* jshint validthis:true */
-    $scope.title = 'equityTransactionController';
+   //  $scope.title = 'equityTransactionController';
   	
-  	var ref = {};
+  	// var ref = {};
   	
   	$scope.pfModel = {
-  		createdAt: undefined,
+  		createdAt: new Date(),
   		personId: undefined,
   		cultureCode: undefined,
   		reason: undefined
   	};
   	
-  	$scope.getRecord = function(){
-  		ref = new Firebase("https://yrma.firebaseio.com/putForward");
-  		ref.on("value", function(response){
-  			$scope.pf_list = [];
-  			$.each(response.val(), function(key, value){
-  				var data = {
-  					"id": key,
-  				};
-  				$.extend(data, value);
-  				$scope.pf_list.push(data);
-  			});
-  			console.log($scope.pf_list);
-  			$scope.$apply();
-  		})
-  	}
+  	// $scope.getRecord = function(){
+  	// 	ref = new Firebase("https://yrma.firebaseio.com/putForward");
+  	// 	ref.on("value", function(response){
+  	// 		$scope.pf_list = [];
+  	// 		$.each(response.val(), function(key, value){
+  	// 			var data = {
+  	// 				"id": key,
+  	// 			};
+  	// 			$.extend(data, value);
+  	// 			$scope.pf_list.push(data);
+  	// 		});
+  	// 		console.log($scope.pf_list);
+  	// 		$scope.$apply();
+  	// 	})
+  	// }
   	
-    activate();
+   //  activate();
 
-    function activate() {
-  		$scope.getRecord();
-  		$http.get('pf_form/sample.json').then(function(response){
-  			//$scope.pf_list = response.data.pf_list;
-  			$scope.users = response.data.users;
-  			$scope.cultureCode = response.data.CultureCode
-  		});
-    }
+   //  function activate() {
+  	// 	$scope.getRecord();
+  	// 	$http.get('pf_form/sample.json').then(function(response){
+  	// 		//$scope.pf_list = response.data.pf_list;
+  	// 		$scope.users = response.data.users;
+  	// 		$scope.cultureCode = response.data.CultureCode
+  	// 	});
+   //  }
   	
-  	$scope.deleteRecord = function(id){
-  		ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
-  		ref.remove();
-  	}
+  	// $scope.deleteRecord = function(id){
+  	// 	ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
+  	// 	ref.remove();
+  	// }
   	
   	$scope.addRecord = function(){
-  		ref = new Firebase("https://yrma.firebaseio.com/");
-  		var usersRef = ref.child("putForward");
-  		var insert = $scope.pfModel;
+      console.log("add Record", $scope.pfModel);
 
-  		var date = insert.createdAt.getMonth() + "/" + insert.createdAt.getDate() + "/" + insert.createdAt.getFullYear();
-  		console.log(date);
-  		insert.createdAt = date;
-  		usersRef.push().set(insert);
-  		$scope.pfModel = {};
-  	}
+      FirebaseService.create("putForward", $scope.pfModel).then(function(response){
+        if(response){
+          Materialize.toast('Record created!', 2000);
+        } else{
+          Materialize.toast('Creation failed!', 2000);
+        }
+
+        $scope.pfModel = {};
+      });
+  		// ref = new Firebase("https://yrma.firebaseio.com/");
+  		// var usersRef = ref.child("putForward");
+  		// var insert = $scope.pfModel;
+
+  		// var date = insert.createdAt.getMonth() + "/" + insert.createdAt.getDate() + "/" + insert.createdAt.getFullYear();
+  		// console.log(date);
+  		// insert.createdAt = date;
+  		// usersRef.push().set(insert);
+  	};
   	
   }]);
