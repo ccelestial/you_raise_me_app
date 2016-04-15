@@ -10,8 +10,8 @@ angular.module('login', ['ngRoute'])
 }])
 
 
-.controller('LoginController', ['$scope','$firebaseAuth','FirebaseService', '$window',
-  function($scope, $firebaseSimpleLogin, FirebaseService, $window) {
+.controller('LoginController', ['$scope','$firebaseAuth','FirebaseService', '$window', '$location', 'User',
+  function($scope, $firebaseSimpleLogin, FirebaseService, $window, $location, User) {
   
   $scope.SignIn = function(event) {
     var ref = new Firebase("https://yrma.firebaseio.com");
@@ -27,9 +27,12 @@ angular.module('login', ['ngRoute'])
             "name":authData.google.displayName,
             "imageUrl":authData.google.profileImageURL
           };
-        FirebaseService.updateOrCreate("user", thisuser).then(function(response){
-          Materialize.toast("Hi " +response.name + "! </br> Welcome back!", 3000);
-        })
+
+          FirebaseService.updateOrCreate("user", thisuser).then(function(response){
+            Materialize.toast("Hi " +response.name + "! </br> Welcome back!", 3000);
+            User.set(response);
+            $location.url('/profile');
+          });
       }
     },
     {scope: "email"}

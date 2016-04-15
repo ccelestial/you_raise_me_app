@@ -12,6 +12,29 @@ angular.module('myApp', [
 ])
 
 //////////////////
+//User Service
+//////////////////
+.factory("User", function () {
+    var data = {};
+    var set = function (value) {
+            data = value;
+        };
+    
+    var get =  function () {
+            return data;
+        };
+        
+    var service =
+    {
+      get:get,
+      set:set,
+      data:data
+    }
+    
+    return service
+})
+
+//////////////////
 // Data Services
 //////////////////
 .factory("FirebaseService", ["$firebaseObject", "$firebaseArray", "$q",
@@ -140,8 +163,6 @@ angular.module('myApp', [
     templateUrl: 'dashboard/dashboard.html',
     controller: 'DashboardController'
   });
-    
-    
 ///$routeProvider.otherwise({redirectTo: '/login'});
 
 }]);

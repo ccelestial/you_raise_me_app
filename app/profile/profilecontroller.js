@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('profile', ['ngRoute','ngMaterial'])
-
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/profile', {
     templateUrl: 'profile/profile.html',
@@ -9,7 +8,7 @@ angular.module('profile', ['ngRoute','ngMaterial'])
   });
 }])
 
-.controller('ProfileController', ['$scope', 'FirebaseService', function ($scope,FirebaseService) {
+.controller('ProfileController', ['$scope', 'FirebaseService','User', function ($scope, FirebaseService, User) {
     
     $scope.integrity = 4;
     $scope.hardwork = 10;
@@ -18,4 +17,9 @@ angular.module('profile', ['ngRoute','ngMaterial'])
     $scope.learning = 3;
     $scope.creativity = 7;
     $scope.endorsements = [{message:'Good'},{message:'Good 1'},{message:'Good 2'},{message:'Good 3'}];
+    
+    $scope.user = User.get();
+    console.log("inloginController", $scope.user);
   }]);
+  
+  

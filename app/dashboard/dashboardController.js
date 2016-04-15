@@ -9,18 +9,17 @@ angular.module('dashboard', ['ngRoute'])
 }])
 
 
-.controller('DashboardController', ['$scope', 'FirebaseService',
-  function($scope, FirebaseService) {
+.controller('DashboardController', ['$scope', 'FirebaseService','$window',
+  function($scope, FirebaseService, $window) {
     $scope.users = [];
-
     $scope.queryAllUsers = function(){
-      FirebaseService.cultureCodes().all().then(function(response){
+      FirebaseService.all("cultureCode").then(function(response){
         console.log("Cc", response.length);
-        FirebaseService.users().all().then(function(response){
+        FirebaseService.all("user").then(function(response){
           console.log("Us", response.length);
-          FirebaseService.putForwards().all().then(function(response){
+          FirebaseService.all("putForwards").then(function(response){
             console.log("Pf", response.length);
-            FirebaseService.endorsements().all().then(function(response){
+            FirebaseService.all("endorsements").then(function(response){
               console.log("En", response.length);
             });
           });
