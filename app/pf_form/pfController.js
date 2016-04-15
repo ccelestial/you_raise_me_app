@@ -1,16 +1,16 @@
 'use strict';
 
-angular
-    .module('myApp')
-	.config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/form', {
-    templateUrl: 'pf_form/pf-form.html',
+angular.module('putForward', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/putFormward', {
+    templateUrl: 'pf_form/pf-from.html',
     controller: 'pfController'
-  }).when('/report', {
-    templateUrl: 'pf_form/pf-report.html'
   });
-  }])
-    .controller('pfController', pfController);
+}])
+
+
+.controller('pfController', pfController);
 
 pfController.$inject = ['$http', '$scope'];
 

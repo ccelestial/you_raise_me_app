@@ -110,7 +110,9 @@ angular.module('myApp', [
     controller: 'DashboardController'
   });
     
-  $routeProvider.otherwise({redirectTo: '/login'});
+    
+///$routeProvider.otherwise({redirectTo: '/login'});
+
 }]);
 
 
