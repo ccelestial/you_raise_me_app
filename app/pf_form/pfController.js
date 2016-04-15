@@ -3,72 +3,69 @@
 angular.module('putForward', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/putFormward', {
-    templateUrl: 'pf_form/pf-from.html',
-    controller: 'pfController'
+  $routeProvider.when('/putForward', {
+    templateUrl: 'pf_form/pf_form.html',
+    controller: 'PfController'
   });
 }])
 
 
-.controller('pfController', pfController);
-
-pfController.$inject = ['$http', '$scope'];
-
-function pfController($http, $scope) {
+.controller('PfController', ['$http', '$scope',
+  function ($http, $scope) {
     /* jshint validthis:true */
     $scope.title = 'equityTransactionController';
-	
-	var ref = {};
-	
-	$scope.pfModel = {
-		createdAt: undefined,
-		personId: undefined,
-		cultureCode: undefined,
-		reason: undefined
-	};
-	
-	$scope.getRecord = function(){
-		ref = new Firebase("https://yrma.firebaseio.com/putForward");
-		ref.on("value", function(response){
-			$scope.pf_list = [];
-			$.each(response.val(), function(key, value){
-				var data = {
-					"id": key,
-				};
-				$.extend(data, value);
-				$scope.pf_list.push(data);
-			});
-			console.log($scope.pf_list);
-			$scope.$apply();
-		})
-	}
-	
+  	
+  	var ref = {};
+  	
+  	$scope.pfModel = {
+  		createdAt: undefined,
+  		personId: undefined,
+  		cultureCode: undefined,
+  		reason: undefined
+  	};
+  	
+  	$scope.getRecord = function(){
+  		ref = new Firebase("https://yrma.firebaseio.com/putForward");
+  		ref.on("value", function(response){
+  			$scope.pf_list = [];
+  			$.each(response.val(), function(key, value){
+  				var data = {
+  					"id": key,
+  				};
+  				$.extend(data, value);
+  				$scope.pf_list.push(data);
+  			});
+  			console.log($scope.pf_list);
+  			$scope.$apply();
+  		})
+  	}
+  	
     activate();
 
     function activate() {
-		$scope.getRecord();
-		$http.get('pf_form/sample.json').then(function(response){
-			//$scope.pf_list = response.data.pf_list;
-			$scope.users = response.data.users;
-			$scope.cultureCode = response.data.CultureCode
-		});
+  		$scope.getRecord();
+  		$http.get('pf_form/sample.json').then(function(response){
+  			//$scope.pf_list = response.data.pf_list;
+  			$scope.users = response.data.users;
+  			$scope.cultureCode = response.data.CultureCode
+  		});
     }
-	
-	$scope.deleteRecord = function(id){
-		ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
-		ref.remove();
-	}
-	
-	$scope.addRecord = function(){
-		ref = new Firebase("https://yrma.firebaseio.com/");
-		var usersRef = ref.child("putForward");
-		var insert = $scope.pfModel;
+  	
+  	$scope.deleteRecord = function(id){
+  		ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
+  		ref.remove();
+  	}
+  	
+  	$scope.addRecord = function(){
+  		ref = new Firebase("https://yrma.firebaseio.com/");
+  		var usersRef = ref.child("putForward");
+  		var insert = $scope.pfModel;
 
-		var date = insert.createdAt.getMonth() + "/" + insert.createdAt.getDate() + "/" + insert.createdAt.getFullYear();
-		console.log(date);
-		insert.createdAt = date;
-		usersRef.push().set(insert);
-		$scope.pfModel = {};
-	}
-	
-};
+  		var date = insert.createdAt.getMonth() + "/" + insert.createdAt.getDate() + "/" + insert.createdAt.getFullYear();
+  		console.log(date);
+  		insert.createdAt = date;
+  		usersRef.push().set(insert);
+  		$scope.pfModel = {};
+  	}
+  	
+  }]);

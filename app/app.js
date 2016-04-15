@@ -7,6 +7,7 @@ angular.module('myApp', [
   'dashboard',      
   'firebase',
   'profile',
+  'putForward',
   'ngMaterial'
 ])
 
@@ -28,8 +29,24 @@ angular.module('myApp', [
         return result.$loaded();
       };
 
+      var create = function(data) {
+        var ref = new Firebase(ccUrl);
+        var result = $firebaseArray(ref);
+
+        return result.$add(data);
+      };
+
+      var remove = function(data) {
+        var ref = new Firebase(ccUrl);
+        var result = $firebaseArray(ref);
+
+        return result.$remove(data);
+      };
+
       var sub_service = {
-        all: all
+        all: all,
+        create: create,
+        remove: remove
       };
 
       return sub_service;

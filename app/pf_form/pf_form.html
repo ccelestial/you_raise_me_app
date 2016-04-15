@@ -1,0 +1,51 @@
+<div layout="column" layout-align="space-around">
+	<h1 style="text-align:center;">Lyn's Form</h1>
+    <div>
+      <table class="striped centered highlight">
+        <thead>
+          <tr>
+            <th data-field="date">Date</th>
+            <th data-field="name">Name</th>
+            <th data-field="culturecode">Culture Code</th>
+            <th data-field="reason">Reason</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>
+              <input type="date" class="datepicker" ng-model="pfModel.createdAt">
+            </th>
+            <th>
+              <select class="browser-default" ng-model="pfModel.personId">
+                <option value="">
+                ---</option>
+                <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
+              </select>
+            </th>
+            <th>
+              <select class="browser-default" ng-model="pfModel.cultureCode">
+                <option value="">
+                ---</option>
+                <option ng-repeat="culture in cultureCode" value="{{culture.id}}">{{culture.name}}</option>
+              </select>
+            </th>
+            <th>
+              <input placeholder="Reason" type="text" ng-model="pfModel.reason">
+            </th>
+            <th>
+              <md-button class="md-raised md-primary" ng-click="addRecord()">Add</md-button>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="list in pf_list">
+            <td>{{list.createdAt}}</td>
+            <td>{{list.personId}}</td>
+            <td>{{list.cultureCode}}</td>
+            <td>{{list.reason}}</td>
+            <td><md-button class="md-raised md-warn" ng-click="deleteRecord(list.id)">Delete</md-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
