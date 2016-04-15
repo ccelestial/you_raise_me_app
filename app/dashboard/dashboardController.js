@@ -9,30 +9,61 @@ angular.module('dashboard', ['ngRoute'])
 }])
 
 
-.controller('DashboardController', ['$scope', 'FirebaseService','$window',
-  function($scope, FirebaseService, $window) {
-    $scope.users = [];
-    $scope.queryAllUsers = function(){
-      FirebaseService.all("cultureCode").then(function(response){
-        console.log("Cc", response.length);
-        FirebaseService.all("user").then(function(response){
-          console.log("Us", response.length);
-          FirebaseService.all("putForwards").then(function(response){
-            console.log("Pf", response.length);
-            FirebaseService.all("endorsements").then(function(response){
-              console.log("En", response.length);
-            });
-          });
-        });
-      });
-      // var ref = new Firebase("https://yrma.firebaseio.com/users");
-      // // ref.orderByChild("height").on("child_added", function(snapshot) {
-      // //   console.log(snapshot.key() + " was " + snapshot.val().height + " meters tall");
-      // // });
-      // ref.on('value', function(ds){
-      //   $scope.users = ds.val();
-      //   $scope.$apply();
-      // });
-    };
+.controller('DashboardController', ['$scope', 'FirebaseService',
+  function($scope, FirebaseService) {
+	var users = [];
+	var endorsements = [];
+	$scope.topThree = []
+	
+	var topThreeEndorsed = function(){
+		return users.sort(function(obj1, obj2) {
+			return obj1.endorsements - obj2.endorsements;
+		}).slice(0, 3)
+	}
+  
+	var getUsers = function(){
+       FirebaseService.all("user").then(function(response){
+		  users = response;
+		  getEndorments();
+       });
+	 };
+	 
+	 var getEndorments = function(){
+       FirebaseService.all("endorsement").then(function(response){
+		  endorsements = response;
+		  console.log("EN", endorsements);
+		  initializeTopEndorsed();
+       });
+	 };
+	 
+	 var getEndorsementCount = function(userId){
+		var result = []
+		if(endorsements.length){
+			var result = endorsements.filter(function(endorsement){
+				return endorsement.endorsedPersonId == userId;
+			});
+		}
+		
+		return result.length;
+	 };
+	 
+	 var initializeTopEndorsed = function() {
+		angular.forEach(users, function(user){
+			user.endorsements = getEndorsementCount(user.id);
+		});
+		
+		$scope.topThree = topThreeEndorsed();
+		console.log("Toph", $scope.topThree);
+	 };
+	  
+	  
+	  var init = function(){
+		getUsers();
+	  };
+	  
+	 init();
+	
   }
+  
+  
 ]);
