@@ -133,6 +133,7 @@ angular.module('myApp', [
     };
 
     var remove = function(tableName, data) {
+      console.log(tableName, data);
       if(!isValidTableName(tableName)){
         return;
       }

@@ -72,15 +72,38 @@ angular.module('putForward', ['ngRoute'])
   	// 	});
    //  }
   	
-  	// $scope.deleteRecord = function(id){
-  	// 	ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
-  	// 	ref.remove();
-  	// }
+  	$scope.deleteRecord = function(data){
+      console.log(data);
+      FirebaseService.remove("putForward", data).then(function(response){
+        Materialize.toast('Successfully deleted!', 2000);
+      });
+  		// ref = new Firebase("https://yrma.firebaseio.com/putForward/"+id);
+  		// ref.remove();
+  	}
+
+    $scope.getName = function(id){
+      var result = $scope.form.employeeOptions.filter(function(employee){
+        return employee.id == id
+      });
+
+      return (result.lenght ? result[0].name : "Unknown");
+    };
+
+    var pfDecorator = function(){
+      var data = {
+        createdAt: $scope.pfModel.createdAt ? $scope.pfModel.createdAt.toString() : new Date(),
+        personId: $scope.pfModel.personId,
+        cultureCode: $scope.pfModel.cultureCode,
+        reason: $scope.pfModel.reason
+      };
+
+      return data;
+    }
   	
   	$scope.addRecord = function(){
-      console.log("add Record", $scope.pfModel);
+      console.log("add Record", pfDecorator());
 
-      FirebaseService.create("putForward", $scope.pfModel).then(function(response){
+      FirebaseService.create("putForward", pfDecorator()).then(function(response){
         if(response){
           Materialize.toast('Record created!', 2000);
         } else{

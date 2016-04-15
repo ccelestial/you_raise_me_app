@@ -66,10 +66,10 @@
         <tbody>
           <tr ng-repeat="list in putForwards">
             <td>{{list.createdAt}}</td>
-            <td>{{list.personId}}</td>
+            <td>{{getName(list.personId)}}</td>
             <td>{{list.cultureCode}}</td>
             <td>{{list.reason}}</td>
-            <td><md-button class="md-raised md-warn" ng-click="deleteRecord(list.id)">Delete</md-button></td>
+            <td><md-button class="md-raised md-warn" ng-click="deleteRecord(list)">Delete</md-button></td>
           </tr>
         </tbody>
       </table>
