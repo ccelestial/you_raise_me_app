@@ -12,6 +12,11 @@ angular.module('putForward', ['ngRoute'])
 
 .controller('PfController', ['$http', '$scope', 'FirebaseService',
   function ($http, $scope, FirebaseService) {
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    
     $scope.form = {
       cultureCodeOptions: [],
       employeeOptions: []

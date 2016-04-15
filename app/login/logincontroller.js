@@ -17,9 +17,9 @@ angular.module('login', ['ngRoute'])
     var ref = new Firebase("https://yrma.firebaseio.com");
      ref.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
+        Materialize.toast('Login Failed! </br> Please contact your administrator.', 3000);
         console.log("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
         var thisuser = 
           {
             "id":authData.google.id,
@@ -27,8 +27,8 @@ angular.module('login', ['ngRoute'])
             "name":authData.google.displayName,
             "imageUrl":authData.google.profileImageURL
           };
-        console.log("Ito Yung User", thisuser);
-        FirebaseService.create("user", thisuser).then(function(response){
+        FirebaseService.updateOrCreate("user", thisuser).then(function(response){
+          Materialize.toast("Hi " +response.name + "! </br> Welcome back!", 3000);
         })
       }
     },
