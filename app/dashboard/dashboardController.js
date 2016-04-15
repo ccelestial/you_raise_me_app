@@ -15,6 +15,9 @@ angular.module('dashboard', ['ngRoute'])
 	var endorsements = [];
 	$scope.topThree = []
 	
+	var putForwardList = [];
+	var cultureCodes = [];
+	
 	var topThreeEndorsed = function(){
 		return users.sort(function(obj1, obj2) {
 			return obj1.endorsements - obj2.endorsements;
@@ -52,10 +55,27 @@ angular.module('dashboard', ['ngRoute'])
 			user.endorsements = getEndorsementCount(user.id);
 		});
 		
+		
 		$scope.topThree = topThreeEndorsed();
 		console.log("Toph", $scope.topThree);
 	 };
+	 
 	  
+	 var getCultureCode = function(){
+       FirebaseService.all("cultureCodes").then(function(response){
+		  cultureCodes = response;
+		  console.log("CC", cultureCodes);
+		  getPutForwards();
+       });
+	 };
+	
+	var getPutForwards = function(){
+       FirebaseService.all("putForward").then(function(response){
+		  putForwardList = response;
+		  console.log("PF", putForwardList);
+       });
+	 };
+	 
 	  
 	  var init = function(){
 		getUsers();
