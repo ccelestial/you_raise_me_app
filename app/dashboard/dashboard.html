@@ -6,112 +6,103 @@
 	
 	.card{
 		text-align:center;
+		border-radius:12px;
 	}
 	
 </style>
 
-<div class="row section FullBox z-depth-2" style="background-color: #F0F0F0; border-radius:7px;" ng-controller="DashboardController">
+<div class="row section FullBox z-depth-2"  style="background-color:#F0F0F0; border-radius:7px;" ng-controller="DashboardController">
 
-		<div class="section" style = "height: 30%; text-align:center;">
-			<!-- <p>TOP ENDORSED PEOPLE</p>			
-			<div style="height: 90%"> -->
-				<div  class = "col s4 FullBox">
-					  <div  class="chip FullBox" style="width:100%; background-color: #3366ff;" >
-						<img ng-if="topThree && topThree.length > 1" src="{{topThree[1].imageUrl}}" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
-						<img ng-if="!topThree || topThree.length <= 1" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
-							<div style="text-align:center">
-							{{topThree[1].name}}
-							<p>2nd</p>
-							</div>
-					  </div>
-				 </div>
-				<div class = "col s4 FullBox">
-					   <div class="chip FullBox"  style="width:100%; background-color: #ff3333">
-						<img ng-if="topThree && topThree.length > 0" src="{{topThree[0].imageUrl}}" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
-						<img ng-if="!topThree || topThree.length <= 0" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
+		<div class="section row" style="text-align:center;">
+			<div class = "section">
+				<div  class = "col s4 ">
+					<div  class = "col s12" >
+						  <div  class="chip " style="background-color: #3366ff;" >
+							<img ng-if="topThree && topThree.length > 1" src="{{topThree[1].imageUrl}}" >
+							<img ng-if="!topThree || topThree.length <= 1" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg" >
+								<div style="text-align:center">
+								{{topThree[1].name}}
+								<p>2nd</p>
+								</div>
+						  </div>
+					 </div>
+				</div>
+				<div class = "col s4 ">
+					<div  class = "col s12" >
+					   <div class="chip "  style="background-color: #ff3333">
+						<img ng-if="topThree && topThree.length > 0" src="{{topThree[0].imageUrl}}" >
+						<img ng-if="!topThree || topThree.length <= 0" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg" >
 							<div style="text-align:center">
 							{{topThree[0].name}}
 							<p>1st</p>
 							</div>
+							</div>
 					  </div>
 				 </div> 
-				 <div class = "col s4 FullBox">
-					   <div class="chip FullBox"  style="width:100%; background-color: #47d147">
-						<img ng-if="topThree && topThree.length > 2" src="{{topThree[2].imageUrl}}" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
-						<img ng-if="!topThree || topThree.length <= 2" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg" style="margin-top: 3%; margin-left: 1%; height: 90%; width:48%">
+				 <div class = "col s4 ">
+					<div  class = "col s12" >
+					   <div class="chip "  style=" background-color: #47d147">
+						<img ng-if="topThree && topThree.length > 2" src="{{topThree[2].imageUrl}}" >
+						<img ng-if="!topThree || topThree.length <= 2" src="https://www.myteespot.com/images/Images_d/DSCF1024.jpg">
 							<div style="text-align:center">
 							{{topThree[2].name}}
 							<p>3rd</p>
 							</div>
+							</div>
 					  </div>
 				 </div> 
-			<!-- </div> -->
+			</div> 
 		</div>
 		
-		<div class="divider"></div>
+		<div class="divider">
+		</div>
 		
-		<div class="section" style = "height: 70%">
-			
-			<div class = "FullBox" style = "text-align: center" > 
-			
-			<h5 style="align:center">CULTURE CODE CHAMPIONS </h5>
-			
-			<div class="row" style = "height: 90%;">
-				
-				<div class = "section" style="height: 195px">
-				
-					<div class = "col s4 FullBox">
-						<div class = "card FullBox" style = "background-color: #3366ff; margin-left: 4%;">Integrity
-								<div class = "card-action" style="height: 100%">
-									<img class="circle" src="http://vignette1.wikia.nocookie.net/nicktoonstoonswars/images/1/1d/The_Flying_Dutchman.png/revision/latest?cb=20120111191637" style="height: 90%; width:48%">
+		<div class="section row" >
+				<div class = "section">
+					<div class = "col s4 ">
+						<div class = "card " style = "background-color: #3366ff; margin-left: 4%;">Integrity
+								<div class = "card-action" >
+									<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 								</div>
 						</div>
 					</div>
-					<div class = "col s4 FullBox">
-						<div class = "card FullBox" style = "background-color: #ff3333; margin-left: 2%; margin-right:2%;">Hardwork
-							<div class = "card-action" style="height: 100%">
-									<img class="circle" src="https://s-media-cache-ak0.pinimg.com/736x/3e/cb/9a/3ecb9a12447b9c0d40c287b60a74ffbb.jpg" style="height: 90%; width:48%">
+					<div class = "col s4 ">
+						<div class = "card " style = "background-color: #ff3333; margin-left: 2%; margin-right:2%;">Hardwork
+							<div class = "card-action" >
+									<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 							</div>
 						</div>
 					</div>
-					<div class = "col s4 FullBox">
-						<div class = "card FullBox" style = "background-color: #47d147; margin-right: 4%;">Fun
-							<div class = "card-action" style="height: 100%">
-									<img class="circle" src="http://vignette3.wikia.nocookie.net/spongebob/images/7/74/Pearlk.jpg/revision/latest?cb=20130416212530" style="height: 90%; width:48%">
+					<div class = "col s4 ">
+						<div class = "card " style = "background-color: #47d147; margin-right: 4%;">Fun
+							<div class = "card-action" >
+									<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 							</div>
 						</div>
 					</div>
-					
 			</div>
-						
-				<div class = "section" style="height: 195px">				
-					<div class = "col s4 FullBox">
-						<div class = "card FullBox" style = "background-color: #3366ff; margin-left: 4%;">Sociable
-								<div class = "card-action" style="height: 100%">
-									<img class="circle" src="https://s-media-cache-ak0.pinimg.com/236x/96/35/3a/96353ab74728debcc56dc9362805d405.jpg" style="height: 90%; width:48%">
+			<div class = "section" >				
+					<div class = "col s4 ">
+						<div class = "card " style = "background-color: #3366ff; margin-left: 4%;">Sociable
+								<div class = "card-action">
+									<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 								</div>
 						</div>
 					</div>
-					<div class = "col s4 FullBox" >
-						<div class = "card FullBox" style = "background-color: #ff3333; margin-left: 2%; margin-right:2%;">Learning
-							<div class = "card-action" style="height: 100%">
-								<img class="circle" src="http://vignette2.wikia.nocookie.net/spongebob/images/7/7e/Mrs._Puff_Appearence.jpg/revision/latest?cb=20120310133927" style="height: 90%; width:48%">
+					<div class = "col s4 " >
+						<div class = "card " style = "background-color: #ff3333; margin-left: 2%; margin-right:2%;">Learning
+							<div class = "card-action" >
+								<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 							</div>
 						</div>
 					</div>
-					<div class = "col s4 FullBox">
-						<div class = "card FullBox" style = "background-color: #47d147; margin-right: 4%;">Creativity
-							<div class = "card-action" style="height: 100%">
-								<img class="circle" src="http://vignette1.wikia.nocookie.net/spongebob/images/9/9e/Plankton-from-spongebob.jpg/revision/latest?cb=20110923013524" style="height: 90%; width:48%">
+					<div class = "col s4 ">
+						<div class = "card " style = "background-color: #47d147; margin-right: 4%;">Creativity
+							<div class = "card-action" >
+								<img class="circle" src="http://orig07.deviantart.net/cebb/f/2009/230/6/c/spongebob_14_150x150_png_by_somemilk.png" >
 							</div>
 						</div>
 					</div>
-					
 				</div>
-				
-			</div>
-			
-			 </div> 
 		</div>
-
 </div>
