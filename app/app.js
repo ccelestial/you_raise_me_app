@@ -7,6 +7,7 @@ angular.module('myApp', [
   'dashboard',      
   'firebase',
   'profile',
+  'endorsement',
   'putForward',
   'putForwardReport',
   'ngMaterial'

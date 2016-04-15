@@ -20,6 +20,7 @@
  -->
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="app.css">
     
@@ -31,6 +32,19 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+  <header>
+     <nav class="nav-wrapper"/>
+      <a class="large material-icons">equalizer</a>
+      <a class="large material-icons">trending_up</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/putForward">Culture Code</a></li>
+        <li><a href="#/endorsement">Endorsements</a></li>
+        <li><a href="#/profile" >Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+  </header>
   <div class="container z-depth-1" ng-view></div>
   
 
@@ -61,7 +75,8 @@
   <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
   
   <script src="login/logincontroller.js"></script>
-  <script src="dashboard/dashboardController.js"></script> 
+  <script src="dashboard/dashboardController.js"></script>
+  <script src="endorsement/endorsementController.js"></script> 
   <script src="profile/profilecontroller.js"></script>
   <script src="pf_form/pfController.js"></script>
   <script src="pf_form/pfReportController.js"></script>
